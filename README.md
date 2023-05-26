@@ -1,6 +1,6 @@
 # gowtools
 
-gowtools is a collection of tools designed to simplify the usage of Go programming language. This project aims to provide developers with useful utilities and functionalities that enhance their Go development workflow. Please note that gowtools is currently in an incomplete state, and all contributions are more than welcome.
+gowtools (go-willow-tools) is a collection of tools designed to simplify the usage of Go programming language. This project aims to provide developers with useful utilities and functionalities that enhance their Go development workflow. Please note that gowtools is currently in an incomplete state, and all contributions are more than welcome.
 
 ## Features
 
