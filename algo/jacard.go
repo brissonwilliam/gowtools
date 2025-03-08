@@ -1,9 +1,6 @@
 package algo
 
 func Jaccard(a []int, b []int) float64 {
-	if len(a) == len(b) {
-		return 1.0
-	}
 	if len(a) == 0 && len(b) == 0 {
 		return 1
 	}
@@ -13,16 +10,34 @@ func Jaccard(a []int, b []int) float64 {
 		a, b = b, a
 	}
 
-	intersect := 0
+	intersect := map[int]uint8{}
 	for _, iVal := range a {
 		for _, jVal := range b {
 			if iVal == jVal {
-				intersect++
+				intersect[iVal] = 1
 				break
 			}
 		}
 	}
 
-	union := (len(a) + len(b)) - intersect
-	return float64(intersect) / float64(union)
+	union := (len(a) + len(b)) - len(intersect)
+	return float64(len(intersect)) / float64(union)
 }
+
+// JaccardFast uses a map to find intersecting elements, reducing the complexity of the olgarithm to O(n) instead of O(n^2)
+func JaccardFast(a []uint16, b map[uint16]uint8) float64 {
+	if len(a) == 0 && len(b) == 0 {
+		return 1
+	}
+
+	intersect := map[uint16]uint8{}
+	for _, iVal := range a {
+		if _, ok := b[iVal]; ok {
+			intersect[iVal] = 1
+		}
+	}
+
+	union := (len(a) + len(b)) - len(intersect)
+	return float64(len(intersect)) / float64(union)
+}
+
